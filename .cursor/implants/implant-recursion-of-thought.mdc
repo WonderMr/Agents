@@ -1,0 +1,7 @@
+---
+description: Recursion of Thought. Breaking recursive tasks (nested structures) into sub-calls.
+globs: []
+alwaysApply: false
+---
+## Pattern
+"Identify recursive structure. Call abstract function 'solve_subtask' for each nested part."

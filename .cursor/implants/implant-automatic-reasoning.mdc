@@ -1,0 +1,10 @@
+---
+description: Automatic Reasoning & Tool-use. Alternates reasoning with tool calls (calc, search).
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. Formulate reasoning step.
+2. **Call Tool** (if needed).
+3. Receive result.
+4. Continue reasoning.

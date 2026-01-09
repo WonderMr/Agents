@@ -1,0 +1,22 @@
+---
+description: Algorithmic reasoning and code generation. Chain of Code, Program of Thoughts, Plan & Solve.
+alwaysApply: false
+---
+## Purpose
+Consolidates algorithmic reasoning and structured problem solving.
+
+## Methods
+1. **Chain of Code (CoC)**
+   - *Use*: Logic puzzles, multi-step math.
+   - *Protocol*: Pseudocode -> Mental Simulation -> Answer.
+
+2. **Program of Thoughts (PoT)**
+   - *Use*: Exact calculations, data processing.
+   - *Protocol*: Write Code -> Execute -> Answer.
+
+3. **Plan & Solve**
+   - *Use*: Architecture, refactoring.
+   - *Protocol*: Atomic Plan -> Sequential Execution.
+
+## Trigger
+"Don't guess. **Calculate** or **Code** the reasoning."

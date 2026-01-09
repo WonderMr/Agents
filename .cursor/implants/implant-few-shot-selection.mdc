@@ -1,0 +1,8 @@
+---
+description: Few-Shot Selection. Dynamic selection of examples based on similarity to request.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. Search DB for 2-3 examples similar to current task.
+2. Insert as Few-Shot context.

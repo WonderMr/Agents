@@ -1,0 +1,216 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Daily Briefing Schema",
+  "description": "Validation schema for daily news briefing analytical reports",
+  "type": "object",
+  "required": ["date", "period", "event_count", "backdrop", "events", "analysis"],
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Briefing date (YYYY-MM-DD)"
+    },
+    "period": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of monitoring period (UTC)"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of monitoring period (UTC)"
+        }
+      }
+    },
+    "event_count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 12,
+      "description": "Number of events in summary (max 12 per protocol)"
+    },
+    "backdrop": {
+      "type": "string",
+      "description": "1-2 sentence summary of the day's key trend",
+      "minLength": 20,
+      "maxLength": 200
+    },
+    "events": {
+      "type": "array",
+      "description": "Array of events sorted chronologically (NOT by importance)",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["sequence", "time", "event", "category", "importance", "source", "stakeholders", "consequences"],
+        "properties": {
+          "sequence": {
+            "type": "integer",
+            "description": "Chronological sequence number (1-12)",
+            "minimum": 1,
+            "maximum": 12
+          },
+          "time": {
+            "type": "string",
+            "pattern": "^([01]?[0-9]|2[0-3]):[0-5][0-9]$",
+            "description": "Event time in HH:MM format"
+          },
+          "event": {
+            "type": "string",
+            "description": "Brief event description",
+            "minLength": 10,
+            "maxLength": 200
+          },
+          "category": {
+            "type": "string",
+            "enum": ["🌍 Geopolitics", "💰 Economy", "⚔️ Security", "🏛️ Politics", "🔬 Technology", "🌡️ Energy"],
+            "description": "Event category with emoji"
+          },
+          "importance": {
+            "type": "string",
+            "enum": ["🔴", "🟠", "🟡"],
+            "description": "Importance level: 🔴 Critical, 🟠 High, 🟡 Medium"
+          },
+          "source": {
+            "type": "object",
+            "required": ["tier", "name"],
+            "properties": {
+              "tier": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3,
+                "description": "Source trust tier (1=highest)"
+              },
+              "name": {
+                "type": "string",
+                "description": "Source name (e.g., 'Reuters', 'BBC')",
+                "minLength": 1
+              },
+              "url": {
+                "type": ["string", "null"],
+                "format": "uri",
+                "description": "Optional source URL"
+              }
+            }
+          },
+          "stakeholders": {
+            "type": "string",
+            "description": "Who benefits (Cui Bono analysis)",
+            "minLength": 5
+          },
+          "consequences": {
+            "type": "string",
+            "description": "Forecast of short/long-term impact",
+            "minLength": 10
+          }
+        }
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "required": ["relationships", "trends"],
+      "properties": {
+        "relationships": {
+          "type": "string",
+          "description": "Description of connections between events, common actors",
+          "minLength": 50
+        },
+        "leverage_points": {
+          "type": "array",
+          "description": "Points of influence in the current situation",
+          "items": {
+            "type": "object",
+            "required": ["actor", "method", "goal", "effectiveness"],
+            "properties": {
+              "actor": {
+                "type": "string",
+                "description": "Who is influencing",
+                "minLength": 1
+              },
+              "method": {
+                "type": "string",
+                "description": "How they are influencing",
+                "minLength": 1
+              },
+              "goal": {
+                "type": "string",
+                "description": "Why (objective)",
+                "minLength": 1
+              },
+              "effectiveness": {
+                "type": "string",
+                "enum": ["High", "Medium", "Low", "Unknown"],
+                "description": "Assessment of effectiveness"
+              }
+            }
+          }
+        },
+        "trends": {
+          "type": "array",
+          "description": "Key trends identified",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["name", "description"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Trend name",
+                "minLength": 5
+              },
+              "description": {
+                "type": "string",
+                "description": "Detailed description",
+                "minLength": 20
+              }
+            }
+          }
+        },
+        "red_flags": {
+          "type": "array",
+          "description": "Warning signs and risks to monitor",
+          "items": {
+            "type": "object",
+            "required": ["risk", "rationale"],
+            "properties": {
+              "risk": {
+                "type": "string",
+                "description": "Risk description",
+                "minLength": 5
+              },
+              "rationale": {
+                "type": "string",
+                "description": "Why it's important to monitor",
+                "minLength": 10
+              }
+            }
+          }
+        },
+        "forecast": {
+          "type": "string",
+          "description": "24-72 hour forecast based on current data",
+          "minLength": 50,
+          "maxLength": 500
+        }
+      }
+    },
+    "methodology": {
+      "type": "object",
+      "properties": {
+        "sources_verified": {
+          "type": "integer",
+          "description": "Number of Tier 1-2 sources cross-verified",
+          "minimum": 1
+        },
+        "generation_timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this briefing was generated"
+        }
+      }
+    }
+  }
+}

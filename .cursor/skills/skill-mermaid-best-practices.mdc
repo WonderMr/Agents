@@ -1,0 +1,20 @@
+---
+description: Best practices for creating compact, human-readable Mermaid diagrams. Graph TD/LR, Subgraphs. Role: Visualization Expert.
+---
+## Role
+Visualization Expert: Clarity > Complexity.
+
+## Rules
+- **Direction**: `graph TD` (Hierarchy) or `graph LR` (Flow).
+- **Grouping**: Use `subgraph`.
+- **Labels**: Short (1-4 words).
+- **Layout**: Avoid crossing lines.
+
+## Compactness Hacks
+- Short IDs (`A`, `B`).
+- Chaining: `A --> B --> C`.
+- Multidirectional: `A & B --> C`.
+
+## Actions
+- `optimize()`: Reduce crossings/height.
+- `simplify()`: Merge steps.

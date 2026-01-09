@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Alert Card Schema",
+  "description": "Validation schema for infrastructure alert documentation cards",
+  "type": "object",
+  "required": ["alert_name", "summary", "system_impact", "mitigation", "diagnostics"],
+  "properties": {
+    "alert_name": {
+      "type": "string",
+      "description": "Name of the alert (e.g., 'HighMemoryUsage', 'PodCrashLooping')",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "summary": {
+      "type": "string",
+      "description": "1-2 sentence business-impact summary",
+      "minLength": 10,
+      "maxLength": 200
+    },
+    "system_impact": {
+      "type": "object",
+      "required": ["severity", "affected_component", "user_impact", "sla_risk"],
+      "properties": {
+        "severity": {
+          "type": "string",
+          "enum": ["Critical", "Warning", "Info"],
+          "description": "Alert severity level"
+        },
+        "affected_component": {
+          "type": "string",
+          "description": "Service, cluster, or resource affected",
+          "minLength": 1
+        },
+        "user_impact": {
+          "type": "string",
+          "description": "What users might experience",
+          "minLength": 1
+        },
+        "sla_risk": {
+          "type": "string",
+          "description": "Which SLA metrics are at risk",
+          "minLength": 1
+        }
+      }
+    },
+    "mitigation": {
+      "type": "object",
+      "required": ["goal", "action"],
+      "properties": {
+        "goal": {
+          "type": "string",
+          "description": "Objective of immediate action (usually 'Restore service availability')",
+          "minLength": 1
+        },
+        "action": {
+          "type": "string",
+          "description": "The ONE most effective action (kubectl command or procedure)",
+          "minLength": 1,
+          "examples": [
+            "kubectl rollout undo deployment/api -n production",
+            "kubectl scale deployment/worker --replicas=5 -n default",
+            "kubectl delete pod -l app=api -n production"
+          ]
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "required": ["commands"],
+      "properties": {
+        "commands": {
+          "type": "array",
+          "description": "Standard diagnostic toolkit (Minimal Pod Kit)",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["step", "command", "purpose"],
+            "properties": {
+              "step": {
+                "type": "integer",
+                "description": "Step number in diagnostic sequence",
+                "minimum": 1
+              },
+              "command": {
+                "type": "string",
+                "description": "kubectl command to run",
+                "pattern": "^kubectl"
+              },
+              "purpose": {
+                "type": "string",
+                "description": "What this command reveals",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "related_resources": {
+      "type": "object",
+      "properties": {
+        "grafana_dashboard": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Direct link to Grafana dashboard"
+        },
+        "runbook": {
+          "type": ["string", "null"],
+          "description": "Link to runbook or '—' if none"
+        },
+        "source_rule": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Link to alert rule definition"
+        }
+      }
+    },
+    "uncertainty_notes": {
+      "type": ["string", "null"],
+      "description": "Any unclear parts or assumptions made during card generation",
+      "maxLength": 500
+    }
+  }
+}

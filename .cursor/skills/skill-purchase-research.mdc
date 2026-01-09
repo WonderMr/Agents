@@ -1,0 +1,252 @@
+---
+description: "Decision Matrix methodology for product comparison and purchase research. Weighted scoring, trust-tiered sources, value optimization."
+---
+
+# Skill: Purchase Research & Decision Matrix
+
+## Purpose
+Provides a structured, quantitative framework for comparing products and making purchase decisions. Optimized for premium (non-luxury) segment where objective comparison reveals best value.
+
+## Core Concepts
+
+### 1. Decision Matrix Framework
+
+A decision matrix converts subjective preferences into objective scores:
+
+```
+Final Score = Σ(Weight_i × Score_i) where i = 1 to n criteria
+```
+
+**Components**:
+- **Criteria**: Measurable or assessable product attributes
+- **Weights**: Importance of each criterion (sum = 1.0)
+- **Scores**: Product performance on each criterion (0-10 scale)
+
+### 2. Trust-Weighted Sources
+
+Not all information is equally reliable. Apply trust scoring:
+
+| Tier | Trust % | Source Types | Usage |
+|------|---------|--------------|-------|
+| **Platinum** | 100% | Professional test labs (rtings, notebookcheck, anandtech) | Primary truth for technical specs |
+| **Gold** | 85% | Expert communities (4pda, overclock.net, head-fi) | Real-world usage, long-term reliability |
+| **Silver** | 70% | Aggregated user reviews (10+ reviews on retail sites) | Common issues, QA problems |
+| **Bronze** | 60% | Tech journalism (CNET, Techradar) | Industry context, trends |
+| **Copper** | 30% | Marketing materials | Specs only, verify elsewhere |
+
+**Conflict Resolution**: When sources disagree, weight by trust tier. If Platinum contradicts Bronze, trust Platinum.
+
+### 3. Premium vs Luxury Distinction
+
+**Premium Indicators**:
+- Engineering excellence (materials, tolerances, R&D)
+- Performance advantage (measurable benchmarks)
+- Longevity (durability, update support)
+- Practical features with real utility
+
+**Luxury Indicators** (deprioritize):
+- Brand prestige without performance delta
+- Aesthetic excess (gold plating, designer branding)
+- Exclusivity as primary value prop
+- Diminishing returns (2x price for 10% better)
+
+**Action**: Calculate "value slope" - does each ₽1000 increase deliver proportional benefit?
+
+## Protocol: Step-by-Step
+
+### Step 1: Define Criteria (From User Needs)
+
+Extract criteria from user's must-haves and nice-to-haves:
+
+**Example Mapping**:
+- User: "Need headphones for work, noise isolation is important"
+- Criteria:
+  - ANC Performance (must-have → high weight)
+  - Battery Life (work context → medium weight)
+  - Microphone Quality (work context → medium weight)
+  - Sound Quality (implied → medium weight)
+  - Comfort (implied for extended use → medium weight)
+
+**Criteria Types**:
+1. **Quantitative**: Benchmarkable (battery mAh, weight grams, response time ms)
+2. **Qualitative**: Expert consensus (build quality, ergonomics, software UX)
+3. **Binary**: Present/absent (feature checklist)
+
+### Step 2: Assign Weights (Validate with User)
+
+**Initial Weighting Formula**:
+- Must-have features: 0.25-0.35 each
+- Nice-to-have features: 0.10-0.20 each
+- Implicit criteria (durability, value): 0.05-0.15 each
+
+**Validation**:
+Present proposed weights to user:
+```markdown
+## Proposed Criteria Weights
+1. ANC Performance: 30% (your top priority)
+2. Battery Life: 20%
+3. Mic Quality: 20%
+4. Sound Quality: 15%
+5. Comfort: 10%
+6. Value (Price/Performance): 5%
+
+Do you want to adjust priorities?
+```
+
+**Adjustment**: Allow user to redistribute ±5-10% between criteria.
+
+### Step 3: Score Products (0-10 Scale)
+
+**Scoring Guidelines**:
+
+**Quantitative Criteria** (use normalization):
+```
+Score = 10 × (Value - Min) / (Max - Min)
+```
+Example: Battery life across products: 20h, 30h, 40h
+- 20h: 10 × (20-20)/(40-20) = 0
+- 30h: 10 × (30-20)/(40-20) = 5
+- 40h: 10 × (40-20)/(40-20) = 10
+
+**Qualitative Criteria** (convert expert ratings):
+- "Excellent" / 5 stars → 9-10
+- "Very Good" / 4 stars → 7-8
+- "Good" / 3 stars → 5-6
+- "Fair" / 2 stars → 3-4
+- "Poor" / 1 star → 0-2
+
+**Binary Criteria** (feature checklist):
+- Present: 10
+- Absent: 0
+- (Or exclude if all products have/lack it)
+
+### Step 4: Calculate Final Scores
+
+Build the matrix:
+
+| Criteria | Weight | Product A | Product B | Product C |
+|----------|--------|-----------|-----------|-----------|
+| ANC Performance | 0.30 | 8 (2.4) | 9 (2.7) | 7 (2.1) |
+| Battery Life | 0.20 | 6 (1.2) | 8 (1.6) | 10 (2.0) |
+| Mic Quality | 0.20 | 7 (1.4) | 9 (1.8) | 6 (1.2) |
+| Sound Quality | 0.15 | 9 (1.35) | 7 (1.05) | 8 (1.2) |
+| Comfort | 0.10 | 8 (0.8) | 7 (0.7) | 9 (0.9) |
+| Value | 0.05 | 5 (0.25) | 7 (0.35) | 6 (0.3) |
+| **TOTAL** | **1.00** | **7.4** | **8.2** | **7.7** |
+
+**Interpretation**:
+- Product B wins (8.2)
+- Gap to #2 (Product C): 0.5 points → significant lead
+- Gap to #3 (Product A): 0.8 points → clear differentiation
+
+### Step 5: Rank and Recommend
+
+**Output Structure**:
+
+1. **Winner Declaration**:
+   ```markdown
+   🥇 **[Product B Name]** (8.2/10)
+   Best choice for your needs
+   ```
+
+2. **Rationale** (tie to user needs):
+   ```markdown
+   **Why it leads**: Excels in key criteria (ANC, microphone),
+   which are critical for your use case (work). Falls behind Product C
+   in battery life, but the gap is offset by fast charging.
+   ```
+
+3. **Trade-off Analysis**:
+   ```markdown
+   **Trade-offs**:
+   - Battery: 30h vs 40h for Product C (but sufficient for workday)
+   - Price: $50 more expensive, but ANC gap justifies it for frequent calls
+   ```
+
+4. **Runner-up Scenario**:
+   ```markdown
+   **Alternative**: Product C
+   **When to choose**: If battery life is more important than ANC (long flights without charging)
+   ```
+
+## Advanced Techniques
+
+### Sensitivity Analysis
+
+Test robustness of decision by adjusting weights ±10%:
+- If winner changes, recommendation is **fragile** → present both options
+- If winner stable, recommendation is **robust** → confident choice
+
+### Diminishing Returns Detection
+
+For each price tier increase, calculate marginal benefit:
+```
+Marginal Value = (Score_higher - Score_lower) / (Price_higher - Price_lower)
+```
+
+**Rule**: Recommend lower tier if marginal value < 0.5 points per ₽1000.
+
+### Long-term Value Projection
+
+Adjust score for longevity factors:
+```
+Adjusted Score = Raw Score × (1 + Longevity Bonus)
+```
+
+**Longevity Bonus**:
+- +0.2: Excellent build, 5+ years expected lifespan
+- +0.1: Good build, 3-5 years expected lifespan
+- 0.0: Average build, 2-3 years expected lifespan
+- -0.1: Questionable build, reliability concerns
+
+## Common Pitfalls (Avoid)
+
+1. **Over-weighting Price**: Value is holistic, not just cheapest. Use "value" criterion, not raw price.
+2. **Feature Bloat Bias**: Having 50 features doesn't mean 10/10 if user needs only 5.
+3. **Halo Effect**: Don't let one excellent criterion inflate others (segment your scoring).
+4. **Recency Bias**: Newest ≠ Best. Previous-gen at -30% price often wins on value.
+5. **Review Manipulation**: Single outlier reviews (too positive/negative) → trust aggregates.
+
+## Integration with Other Skills
+
+**Combine with**:
+- `skill-analysis-critical.mdc`: For deconstructing marketing claims vs reality
+- `skill-reasoning-logic.mdc`: For Chain of Verification on conflicting specs
+- `skill-dense-summarization.mdc`: For compacting research into executive summary
+
+## Quick Reference
+
+**Decision Matrix Checklist**:
+- [ ] Criteria defined from user needs
+- [ ] Weights sum to 1.0
+- [ ] Weights validated with user
+- [ ] Scores normalized (0-10)
+- [ ] Sources cited with trust tier
+- [ ] Calculations shown (transparency)
+- [ ] Top 3 ranked with rationale
+- [ ] Trade-offs explained
+- [ ] Runner-up scenario provided
+
+**Trust Score Checklist**:
+- [ ] Platinum sources prioritized (rtings, notebookcheck)
+- [ ] Conflicts flagged and resolved
+- [ ] Marketing claims verified independently
+- [ ] User reviews aggregated (not cherry-picked)
+
+---
+
+## Example Output (Abbreviated)
+
+**Query**: "Gaming headset, under $250, need good microphone"
+
+**Matrix**:
+| Criteria | Wt | SteelSeries Arctis Nova Pro | HyperX Cloud III | Razer BlackShark V2 Pro |
+|----------|----|-----------------------------|------------------|-------------------------|
+| Mic Quality | 0.35 | 9 (3.15) | 8 (2.8) | 7 (2.45) |
+| Sound | 0.25 | 8 (2.0) | 9 (2.25) | 8 (2.0) |
+| Comfort | 0.20 | 7 (1.4) | 9 (1.8) | 8 (1.6) |
+| Build | 0.15 | 9 (1.35) | 8 (1.2) | 7 (1.05) |
+| Value | 0.05 | 6 (0.3) | 8 (0.4) | 7 (0.35) |
+| **Total** | 1.0 | **8.2** | **8.45** | **7.45** |
+
+**Recommendation**: HyperX Cloud III (8.45) wins despite lower mic rating because gap is small (8 vs 9) while it dominates on comfort (critical for long gaming sessions). Trade-off: SteelSeries has slightly better mic but less comfortable. Runner-up: SteelSeries if streaming/communication > gaming duration.

@@ -1,0 +1,8 @@
+---
+description: Skeleton-of-Thought. Speed & Coherence. Outline first, then expand parallel.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. **Skeleton**: Generate concise outline (headers only).
+2. **Expansion**: Expand each point in parallel/sequence.

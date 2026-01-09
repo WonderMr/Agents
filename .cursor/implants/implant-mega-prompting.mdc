@@ -1,0 +1,7 @@
+---
+description: Mega-Prompting. All-in-one instruction (Role + Context + Steps + Examples + Format).
+globs: []
+alwaysApply: false
+---
+## Pattern
+Combine: [Role] + [Context] + [Step-by-Step Algo] + [Few-Shot] + [Output Format JSON/XML].

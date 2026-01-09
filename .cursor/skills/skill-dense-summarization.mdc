@@ -1,0 +1,23 @@
+---
+description: "Guidelines for condensing information to high density"
+---
+# Dense Summarization Skill
+
+## Core Principle: Pareto Efficiency (80/20)
+Your goal is to capture 80% of the value (insight, facts, nuance) in 20% of the volume.
+
+## Rules
+
+1.  **Eliminate Fluff**: Remove conversational fillers, polite introductions, self-references ("I found that", "This article says").
+2.  **Information Density**:
+    -   Use bullet points for lists.
+    -   Use tables for comparative data.
+    -   Combine related facts into single, dense sentences.
+3.  **Source Attribution**:
+    -   Every major claim must have a reference [1].
+    -   Group sources by credibility.
+4.  **Structure**:
+    -   **Executive Summary**: The "Bottom Line Up Front" (BLUF).
+    -   **Key Findings**: The core 3-5 facts/insights.
+    -   **Nuance & Counterpoints**: Important exceptions or disagreements in data.
+    -   **Raw Data/References**: Links to deep dive.

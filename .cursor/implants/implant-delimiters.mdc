@@ -1,0 +1,7 @@
+---
+description: Delimiters. Using tags/symbols to separate data from instructions. Security against injection.
+globs: []
+alwaysApply: false
+---
+## Pattern
+Wrap data in `"""` or `<context>...</context>`.

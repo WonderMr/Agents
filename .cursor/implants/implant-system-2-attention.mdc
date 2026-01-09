@@ -1,0 +1,9 @@
+---
+description: System 2 Attention. Input cleaning. Removes bias/flattery before answering.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. **Analyze**: Check for bias/flattery/leading questions.
+2. **Clean**: Rewrite request to contain ONLY objective facts.
+3. **Execute**: Answer the cleaned request.

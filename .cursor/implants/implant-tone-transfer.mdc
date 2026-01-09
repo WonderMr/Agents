@@ -1,0 +1,8 @@
+---
+description: Tone Transfer. Rewrite text B in style of text A.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. Analyze style of [Input A].
+2. Rewrite [Input B] fully imitating style of A, keeping meaning of B.

@@ -1,0 +1,7 @@
+---
+description: Buffer of Thoughts. Meta-template extraction for repetitive tasks. Stability & Consistency.
+globs: []
+alwaysApply: false
+---
+## Pattern
+"Extract the reasoning meta-template for this type of task. Then apply this template (instantiate it) to solve the current request."

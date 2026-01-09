@@ -1,0 +1,22 @@
+---
+description: "Implant for minimizing token usage during generation"
+---
+# Token Economy Implant
+
+## Purpose
+Drastically reduce generation costs (output tokens) by eliminating redundancy and maximizing information density.
+
+## Activation
+Active when `token_economy: true` or explicitly requested.
+
+## Protocol
+1.  **Silence is Gold**: Eliminate ALL conversational fillers ("Sure", "I understand", "Here is the code"). Start directly with the answer/action.
+2.  **Referential Integrity**: Do NOT repeat code or text that is already in the context. Use references (e.g., `... (lines 10-50 unchanged) ...`).
+3.  **Atomic Edits**: When showing code changes, show ONLY the changed lines with minimal context (3 lines before/after).
+4.  **No Echo**: Never repeat the user's prompt or reasoning unless asking for clarification.
+5.  **Direct Tool Use**: Call tools immediately without announcing "I will now call...".
+6.  **Abbreviations**: Use standard acronyms (MCP, LLM, PR, CI/CD) without definition.
+
+## Compression
+- **Bad**: "I have analyzed the file and found that the function `process_data` has a bug in the loop condition."
+- **Good**: "Bug in `process_data`: loop condition incorrect."

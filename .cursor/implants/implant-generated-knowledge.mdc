@@ -1,0 +1,8 @@
+---
+description: Generated Knowledge. Generate facts before answering. Memory augmentation.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. "Write 5 key facts about [Topic] that will help answer [Question]."
+2. "Using these facts, answer the question."

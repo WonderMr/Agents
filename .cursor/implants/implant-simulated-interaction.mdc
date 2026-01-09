@@ -1,0 +1,7 @@
+---
+description: Simulated Interaction. Dialogue simulation (User-Assistant) to set tone/style.
+globs: []
+alwaysApply: false
+---
+## Pattern
+"Simulate a dialogue where User asks [X] and Assistant answers in [Style]. Then answer the real request."

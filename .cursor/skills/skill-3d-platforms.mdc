@@ -1,0 +1,221 @@
+---
+description: Comprehensive registry of 3D printable model platforms with search strategies and quality indicators.
+---
+# Skill: 3D Print Platforms
+
+## Purpose
+Centralized knowledge base of 3D model platforms for FDM printing. Use when searching for STL/3MF files.
+
+## Platform Tiers
+
+### Tier 1: Primary Platforms (High Quality, Curated)
+
+#### Printables.com (Prusa Research)
+- **Quality**: ⭐⭐⭐⭐⭐ (Prusa-tested models)
+- **Library Size**: 500K+ models
+- **Strengths**:
+  - Models tested by Prusa team
+  - Active contests with verified winners
+  - Detailed print settings and photos
+- **Search Strategy**: Use filters for "Tested by Prusa", sort by "Most Makes"
+- **Best For**: Functional prints, reliable quality
+
+#### Thingiverse.com (MakerBot)
+- **Quality**: ⭐⭐⭐ (Variable, large abandoned model count)
+- **Library Size**: 3M+ models (largest)
+- **Strengths**:
+  - Oldest community, massive library
+  - Many classic designs
+- **Weakness**: Many abandoned/broken models
+- **Search Strategy**: ALWAYS sort by "Most Makes" (not downloads)
+- **Best For**: Finding obscure parts, remixable designs
+
+#### Thangs.com (Physna)
+- **Quality**: ⭐⭐⭐⭐
+- **Library Size**: 1M+ models
+- **Strengths**:
+  - AI-powered semantic search (understands "gear for M3 screw")
+  - Visual similarity search
+  - Automatic categorization
+- **Search Strategy**: Use natural language queries
+- **Best For**: Complex searches, finding similar designs
+
+#### MyMiniFactory.com
+- **Quality**: ⭐⭐⭐⭐⭐ (Curated by designers)
+- **Library Size**: 100K+ models
+- **Strengths**:
+  - Designer-vetted quality
+  - High aesthetic value
+  - Pre-supported models for resin
+- **Search Strategy**: Use category filters
+- **Best For**: Miniatures, artistic prints, display pieces
+
+#### Cults3D.com
+- **Quality**: ⭐⭐⭐⭐
+- **Library Size**: 500K+ models (mix of free/paid)
+- **Strengths**:
+  - Premium designer models
+  - Curated collections
+- **Weakness**: Many paid models (filter required)
+- **Search Strategy**: Enable "Free only" filter if needed
+- **Best For**: Design-focused prints, unique items
+
+---
+
+### Tier 2: Secondary Platforms
+
+#### Maker.World (Bambu Lab)
+- **Quality**: ⭐⭐⭐⭐ (Rapidly growing)
+- **Library Size**: 50K+ models (new platform)
+- **Strengths**:
+  - Optimized for Bambu printers
+  - Includes print profiles
+- **Best For**: Bambu Lab users
+
+#### PrusaPrinters.org
+- **Quality**: ⭐⭐⭐⭐
+- **Note**: Merged with Printables.com
+- **Action**: Redirect searches to Printables
+
+#### GrabCAD.com
+- **Quality**: ⭐⭐⭐⭐⭐ (Engineering-grade)
+- **Library Size**: 5M+ CAD models
+- **Strengths**:
+  - Professional engineering models
+  - STEP/IGES formats available
+- **Weakness**: Many are NOT print-ready (require slicing prep)
+- **Best For**: Engineering parts, CAD learning
+
+#### YouMagine.com
+- **Quality**: ⭐⭐⭐
+- **Library Size**: 20K+ models
+- **Strengths**: Open-source focused
+- **Best For**: Open hardware projects
+
+---
+
+### Tier 3: Meta-Search & Aggregators
+
+#### Yeggi.com
+- **Type**: Meta-search engine (searches ALL platforms)
+- **Strengths**:
+  - Single query across 100+ sites
+  - Finds models on obscure platforms
+- **Usage**: Use as fallback when Tier 1 searches fail
+- **Limitation**: No quality filtering
+
+#### STLFinder.com
+- **Type**: Search aggregator
+- **Similar to**: Yeggi but with preview thumbnails
+
+---
+
+### Tier 4: Specialized/Regional
+
+#### 3DExport.com
+- **Type**: Commercial marketplace
+- **Note**: Mostly paid models, high prices
+
+#### Pinshape.com
+- **Status**: Low activity (declining platform)
+- **Action**: Low priority
+
+#### CGTrader.com
+- **Type**: Professional 3D model marketplace
+- **Note**: Focus on game/VFX assets, not print-optimized
+- **Best For**: Reference models, remixing
+
+---
+
+## Search Strategy Matrix
+
+| Query Type | Primary Platform | Secondary | Fallback |
+|------------|-----------------|-----------|----------|
+| **Functional Parts** | Printables | Thingiverse | Yeggi |
+| **Miniatures** | MyMiniFactory | Cults3D | Printables |
+| **Engineering** | GrabCAD | Thangs | Printables |
+| **Artistic** | Cults3D | MyMiniFactory | Printables |
+| **Obscure/Vintage** | Thingiverse | Yeggi | Archive search |
+
+## Quality Indicators (PQRS Framework)
+
+### Printability (P) — 40% Weight
+- ✅ **High**: "Support-free", "FDM-optimized", photos of successful prints
+- ⚠️ **Medium**: Requires supports, standard overhangs
+- ❌ **Low**: No make photos, resin-only warnings
+
+### Quality (Q) — 30% Weight
+- ✅ **High**: Rating > 4.5/5, Downloads > 1000, Makes > 100
+- ⚠️ **Medium**: Rating 3.5-4.5, Some successful makes
+- ❌ **Low**: Rating < 3.5, No makes, abandoned model
+
+### Relevance (R) — 20% Weight
+- ✅ **Exact**: Matches query + category + use case
+- ⚠️ **Partial**: Matches query but needs adaptation
+- ❌ **Loose**: Keyword match only, unrelated category
+
+### Support (S) — 10% Weight
+- ✅ **High**: Multiple formats (STL, 3MF, STEP), CC license, build instructions
+- ⚠️ **Medium**: STL only, unclear license
+- ❌ **Low**: Single format, restrictive license, no docs
+
+## FDM-Specific Filters
+
+### Auto-Exclude
+- Models tagged "resin only"
+- SLA/DLP specific designs
+- Models with < 0.4mm features (nozzle limit)
+
+### Auto-Flag Warnings
+- Thin walls < 1mm (print risk)
+- Overhangs > 60° without supports (sag risk)
+- Large bed size requirements (> 250x250)
+
+### Auto-Prioritize
+- "Support-free" designs
+- "Printed successfully" badge/tag
+- Creator-documented print settings
+
+## Platform-Specific Search Syntax
+
+### Printables.com
+```
+[keyword] filter:tested_by_prusa
+[keyword] sort:most_makes
+```
+
+### Thingiverse.com
+```
+[keyword] sort:makes
+[keyword] -remix (exclude remixes)
+```
+
+### Thangs.com
+```
+Natural language: "phone holder with cable management"
+Visual search: Upload image of similar design
+```
+
+### Yeggi.com
+```
+[keyword] -"download for $" (exclude paid)
+[keyword] site:printables.com (limit to one platform)
+```
+
+## License Awareness
+
+| License | Commercial OK? | Remix OK? | Attribution Required? |
+|---------|---------------|-----------|----------------------|
+| **CC0 / Public Domain** | ✅ Yes | ✅ Yes | ❌ No |
+| **CC-BY** | ✅ Yes | ✅ Yes | ✅ Yes |
+| **CC-BY-SA** | ✅ Yes | ✅ Yes (must share-alike) | ✅ Yes |
+| **CC-BY-NC** | ❌ No | ✅ Yes | ✅ Yes |
+| **CC-BY-NC-SA** | ❌ No | ✅ Yes (must share-alike) | ✅ Yes |
+| **Personal Use Only** | ❌ No | ❌ No | Varies |
+
+**Action**: Always report license in recommendations. Flag commercial restrictions.
+
+## Integration Notes
+- **Primary User**: `3d_print_finder` agent
+- **Load Trigger**: When query contains "3d print", "stl", "model"
+- **Update Frequency**: Quarterly (platforms change ranking)

@@ -1,0 +1,9 @@
+---
+description: Self-Harmonized CoT. Generates multiple solutions and harmonizes/merges them.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. Generate 3 independent solutions.
+2. Compare and highlight strong points.
+3. Synthesize final answer by combining best parts.

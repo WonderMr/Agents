@@ -1,0 +1,13 @@
+---
+description: Git Commit Conventions. Conventional Commits, Atomic Commits.
+---
+## Rules
+1. **Format**: `type(scope): subject`
+   - **Types**: feat, fix, docs, style, refactor, perf, test, chore.
+   - **Subject**: Imperative ("add" not "added"), no dot at end.
+2. **Body**: Wrap at 72 chars. Explain *what* and *why*.
+3. **Atomic**: One logical change per commit.
+
+## Best Practices
+- Clear messages.
+- If it needs "and", split the commit.

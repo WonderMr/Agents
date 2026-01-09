@@ -1,0 +1,7 @@
+---
+description: Directional Stimulus. Subtle hint/stimulus to guide generation context (e.g., "Must mention X").
+globs: []
+alwaysApply: false
+---
+## Pattern
+Append hint to request: "Hint: Focus on [Specific Aspect]."

@@ -1,0 +1,9 @@
+---
+description: Constitutional Critique. Ethical Self-Correction based on principles (Safety, Helpfulness). Constitutional AI.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. Generate draft.
+2. "Does this violate principles [Safety/Ethics]?"
+3. Rewrite correcting violations.

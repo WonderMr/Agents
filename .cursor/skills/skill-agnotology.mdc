@@ -1,0 +1,36 @@
+---
+description: "Agnotology Skills: Detection of hidden knowledge and cultural ignorance"
+---
+# Skill: Agnotology (Detection of Ignorance)
+
+## Purpose
+To detect "Black Holes" in knowledge—areas where information is systematically missing, suppressed, or distorted. This skill provides the methodologies for the `black_hole_finder` agent.
+
+## Core Methodologies
+
+### 1. Gravitational Lensing (Semantic Analysis)
+**Principle**: Language curves around forbidden zones. If something cannot be said directly, euphemisms and complex constructions appear.
+**Algorithms**:
+- **Discourse Mapping**: Collect a corpus of texts on the topic.
+- **Semantic Void Search**: Identify logical chains $A \rightarrow B \rightarrow C$. If $B$ is missing but $A$ connects to $C$ awkwardly, $B$ is a void.
+- **Silence Analysis**: Use inverse TF-IDF logic. Search for terms that *should* be high-frequency given the context, but are statistically absent (Stop-words of culture).
+
+### 2. Temporal Discontinuity (Chronological Analysis)
+**Principle**: Knowledge does not vanish instantly; it is rewritten or fades out.
+**Algorithms**:
+- **Time-Slicing**: Compare sources from different epochs (Pre-suppression vs Post-suppression).
+- **Citational Amnesia**: Identify authors or theories that were widely cited and then abruptly dropped without refutation.
+- **Cross-Cluster Differential**: Compare narratives across different language clusters (e.g., English Wiki vs Local Archives). The "mass difference" in facts indicates an event horizon.
+
+### 3. Hawking Radiation (Anomaly Analysis)
+**Principle**: No secrecy system is perfect. Leaks (radiation) are inevitable due to entropy and human factor.
+**Algorithms**:
+- **Noise Collection**: Analyze marginal sources, expert slips, footnotes, and small print.
+- **Contradiction Triangulation**: If Source A says "White" and Source B says "Black", the truth is not in the middle. Find the "Third Factor" that forces both to lie or contradict.
+- **Cui Prodest Graph**: Build an interest graph. The "Black Hole" is always at the center of the resource/power flow.
+
+## Actions
+
+- `detect_void(discourse_corpus)`: Returns list of missing semantic links.
+- `compare_timelines(source_a, source_b)`: Returns chronological gaps.
+- `triangulate_anomaly(claim_a, claim_b)`: Returns potential hidden factor.

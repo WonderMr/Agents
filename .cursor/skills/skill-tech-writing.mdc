@@ -1,0 +1,13 @@
+---
+description: Technical Writing and Documentation Best Practices. Clarity, Conciseness, Markdown.
+---
+## Principles
+- **Clarity**: Simple language, no jargon.
+- **Conciseness**: Get to the point.
+- **Consistency**: Unified terminology/format.
+- **Active Voice**: "System processes data" (not "Data is processed").
+
+## Structure
+- **Headings**: H1 > H2 > H3.
+- **Lists**: Bullets for items, Numbers for steps.
+- **Code**: Always specify language.

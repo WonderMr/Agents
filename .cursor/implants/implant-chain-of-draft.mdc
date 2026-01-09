@@ -1,0 +1,7 @@
+---
+description: Token efficiency implant. Uses thesis points and mini-steps (3-5 words) instead of full CoT.
+globs: []
+alwaysApply: false
+---
+## Pattern
+"Think in thesis points. Use mini-steps of 3–5 words instead of long explanations before the answer."

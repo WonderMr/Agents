@@ -1,0 +1,170 @@
+---
+description: ClickUp-specific Markdown formatting rules and quirks. Use when generating content for ClickUp tasks/comments.
+---
+# Skill: ClickUp Markdown
+
+## Purpose
+ClickUp uses a modified Markdown renderer with specific quirks that differ from standard Markdown. This skill ensures content renders correctly in ClickUp UI.
+
+## Critical Rules
+
+### 1. Interactive Checkboxes
+**Syntax**: `[] ` (space after brackets, NO dash before)
+
+```markdown
+✅ Correct:
+[] Task item 1
+[] Task item 2
+
+❌ Wrong:
+- [ ] Task item  (dash breaks ClickUp rendering)
+```
+
+**Result**: ClickUp renders these as interactive checkboxes users can click.
+
+### 2. Bold Text
+**Syntax**: Single asterisk `*text*` instead of double `**text**`
+
+```markdown
+✅ Correct:
+*Important text*
+
+❌ Wrong:
+**Important text**  (renders incorrectly in ClickUp)
+```
+
+### 3. Headers
+**Syntax**: Use bold text instead of `#` symbols
+
+```markdown
+✅ Correct:
+*Section Header*
+
+❌ Wrong:
+## Section Header  (adds unwanted spacing in ClickUp)
+```
+
+### 4. Separators
+**Syntax**: `---` with blank lines before and after
+
+```markdown
+✅ Correct:
+Content above
+
+---
+
+Content below
+
+❌ Wrong:
+Content above
+---
+Content below  (no vertical spacing)
+```
+
+### 5. Spacing
+**Rule**: NO double newlines between list items (causes huge vertical gaps)
+
+```markdown
+✅ Correct:
+[] Item 1
+[] Item 2
+[] Item 3
+
+❌ Wrong:
+[] Item 1
+
+[] Item 2
+
+[] Item 3  (huge gaps in ClickUp UI)
+```
+
+### 6. Code Blocks
+**Rule**: Use inline backticks, avoid triple backticks for large blocks
+
+```markdown
+✅ Correct:
+File: `src/main.py` modified
+
+❌ Avoid:
+```python
+def foo():
+    pass
+```  (formatting issues in comments)
+```
+
+### 7. Tables
+**Rule**: Keep tables simple, avoid nesting
+
+```markdown
+✅ Correct:
+| Column 1 | Column 2 |
+|----------|----------|
+| Value A  | Value B  |
+
+❌ Avoid:
+Complex nested tables (render poorly)
+```
+
+## Language Rule
+**Default**: ALL text in Russian (except code/file names, technical terms)
+
+```markdown
+✅ Correct:
+[] *Files*: `src/main.py` modified
+
+❌ Wrong:
+[] *Fajly*: `src/main.py` izmenen
+```
+
+## Anti-Patterns Summary
+
+| Pattern | Issue | Fix |
+|---------|-------|-----|
+| `- [ ]` | Breaks checkbox rendering | Use `[] ` |
+| `**bold**` | Renders incorrectly | Use `*bold*` |
+| `## Header` | Adds unwanted spacing | Use `*Header*` |
+| Double newlines | Huge vertical gaps | Single newlines |
+| Triple backticks | Formatting issues in comments | Inline backticks |
+| English text | User preference | Use Russian |
+
+## Usage Pattern
+
+When generating ClickUp content:
+1. Start with checkbox list (interactive)
+2. Group related items under bold headers
+3. Use tables for structured data
+4. Add separators (`---`) between major sections
+5. Keep everything compact (single newlines)
+6. Test in ClickUp preview if possible
+
+## Example Output
+
+```markdown
+🤖 *Work Report | 2025.01.07*
+
+*🎯 Summary*
+[] *Agents*: Fixed routing keywords
+[] *Cases*: Updated AI research
+
+---
+
+*📂 Repositories*
+
+*Agents* (main)
+[] `M .cursor/agents/work_reporter/system_prompt.mdc` - formatting fixed
+[] `A .cursor/skills/skill-clickup-markdown.mdc` - new skill
+
+---
+
+*📊 Statistics*
+Repositories: 1 | Changes: 2 files | Lines: +50/-10
+
+---
+
+_Work Reporter Agent @ 2025-01-07 15:30_
+```
+
+## Integration
+- **Primary User**: `work_reporter` agent
+- **Secondary Users**: Any agent posting to ClickUp
+- **Load Trigger**: When `clickup` appears in routing keywords or user mentions ClickUp

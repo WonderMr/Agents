@@ -1,0 +1,252 @@
+---
+description: "Multi-platform 3D model search, quality assessment, and FDM print optimization"
+---
+
+## Purpose
+Specialized search and evaluation framework for 3D printable models across all major platforms.
+
+## Core Platforms (Prioritized)
+
+### Tier 1 (Curated, High Quality)
+1. **Printables.com** (Prusa)
+   - Search URL: `https://www.printables.com/search/models?q=[query]`
+   - Best for: Tested models, FDM-optimized
+   - Data: Ratings, makes, downloads, license
+
+2. **Thangs.com** (Physna)
+   - Search URL: `https://thangs.com/search/[query]`
+   - Best for: Semantic/visual search, AI-powered
+   - Data: AI-matched results, technical specs
+
+3. **MyMiniFactory.com**
+   - Search URL: `https://www.myminifactory.com/search/?query=[query]`
+   - Best for: Miniatures, artistic models
+   - Data: Designer-verified quality
+
+### Tier 2 (Large Libraries)
+4. **Thingiverse.com** (MakerBot)
+   - Search URL: `https://www.thingiverse.com/search?q=[query]`
+   - Best for: Widest selection
+   - ⚠️ Variable quality - sort by "Most Makes"
+
+5. **Cults3D.com**
+   - Search URL: `https://cults3d.com/en/search?q=[query]`
+   - Best for: Premium designs
+   - Note: Mix of free/paid
+
+### Tier 3 (Specialized)
+6. **GrabCAD.com** - Engineering/CAD models
+7. **YouMagine.com** - Open-source focus
+8. **PrusaPrinters.org** - Community hub
+9. **Maker.World** - Bambu Lab ecosystem
+10. **Yeggi.com** - Meta-search aggregator (searches others)
+
+## Search Strategies
+
+### Strategy 1: Site-Specific Web Search
+```
+site:printables.com [query]
+site:thingiverse.com [query]
+site:thangs.com [query]
+```
+Best for: Quick broad coverage via search engines.
+
+### Strategy 2: Aggregator Proxy
+```
+Search via Yeggi.com: "[query] filetype:stl"
+```
+Best for: Catching models from smaller platforms.
+
+### Strategy 3: Direct Platform Navigation
+If web search fails:
+1. Use `browser_navigate` to platform search page
+2. Use `browser_snapshot` to extract results
+3. Parse table/grid of models
+
+## Quality Metrics
+
+### Printability Indicators (Green Flags)
+- ✅ "No supports needed" tag
+- ✅ Multiple successful makes (>50)
+- ✅ Creator-provided print settings
+- ✅ Photos of finished prints (not just renders)
+- ✅ Orientation guide
+- ✅ Multi-part models with assembly instructions
+
+### Quality Red Flags
+- ❌ Rating < 3 stars
+- ❌ No makes/downloads (untested)
+- ❌ Only renders, no print photos
+- ❌ Abandoned (last update >3 years, issues unanswered)
+- ❌ Mesh errors reported in comments
+- ⚠️ "Needs repair" comments
+
+### FDM-Specific Checks
+- **Overhangs**: >60° usually needs supports
+- **Bridging**: Gaps >10mm may need tuning
+- **Minimum Feature Size**: <0.4mm risky for 0.4mm nozzle
+- **Wall Thickness**: <1mm may be fragile
+
+## PQRS Scoring Formula
+
+```python
+PQRS = (Printability × 0.4) + (Quality × 0.3) + (Relevance × 0.2) + (Support × 0.1)
+
+# Printability (0-40)
+printability = 0
+if no_supports_needed: printability += 15
+if has_print_photos: printability += 10
+if has_settings_guide: printability += 10
+if creator_tested: printability += 5
+
+# Quality (0-30)
+quality = 0
+if rating >= 4.5: quality += 10
+elif rating >= 4.0: quality += 7
+elif rating >= 3.5: quality += 4
+
+if downloads > 1000: quality += 10
+elif downloads > 500: quality += 7
+elif downloads > 100: quality += 4
+
+if makes > 100: quality += 10
+elif makes > 50: quality += 7
+elif makes > 10: quality += 4
+
+# Relevance (0-20)
+# Semantic match to query
+exact_match: 20
+category_match: 15
+partial_match: 10
+tangential: 5
+
+# Support (0-10)
+support = 0
+if has_multiple_formats: support += 5  # STL + 3MF + STEP
+if license_is_clear: support += 3       # CC-BY, CC0, etc.
+if has_documentation: support += 2      # README, instructions
+```
+
+## Output Templates
+
+### Compact Result (for lists)
+```markdown
+**[Model Name]** | PQRS: **XX**/100 | [Platform]
+⭐ X.X/5 | 📥 YYY | ✅ ZZ makes | Supports: [Yes/No]
+🔗 [link]
+```
+
+### Detailed Result (for top 3)
+```markdown
+### 🥇 [Model Name] (PQRS: XX/100)
+
+**Platform**: [Name]
+**Creator**: [Username]
+**Stats**: ⭐ X.X/5 | 📥 YYY downloads | ✅ ZZ successful makes
+
+**Files**: STL, 3MF, STEP
+**License**: CC-BY 4.0 (✅ Commercial use OK)
+
+**Printability**:
+- Supports: Not required (optimized for FDM)
+- Est. print time: X hours (@0.2mm, 50mm/s)
+- Material: PLA recommended (PETG for strength)
+
+**Gotchas**:
+- [Any special notes from creator or community]
+
+**Link**: [URL]
+```
+
+## FDM Print Recommendations
+
+### By Category
+
+**Functional Parts** (tools, holders, mounts):
+- Material: PETG or ABS (strength, temp resistance)
+- Infill: 30-50% (load-bearing)
+- Perimeters: 3-4 walls
+- Layer height: 0.2-0.3mm (speed over detail)
+
+**Decorative** (figurines, art):
+- Material: PLA (easy, good detail)
+- Infill: 10-15% (just for support)
+- Perimeters: 2-3 walls
+- Layer height: 0.12-0.16mm (detail)
+
+**Miniatures** (tabletop gaming):
+- Material: PLA or resin (FDM struggles with fine detail)
+- Infill: 10%
+- Layer height: 0.08-0.12mm (maximum detail)
+- Speed: 30mm/s (quality over speed)
+- ⚠️ FDM limits: ~0.4mm features, consider resin for <28mm scale
+
+**Prototypes/Drafts**:
+- Material: PLA (cheap)
+- Infill: 10%
+- Layer height: 0.3mm (fast)
+- Draft mode settings
+
+## License Quick Reference
+
+| License | Commercial Use | Remix/Modify | Attribution Required |
+|---------|----------------|--------------|---------------------|
+| **CC0 / Public Domain** | ✅ | ✅ | ❌ |
+| **CC-BY** | ✅ | ✅ | ✅ |
+| **CC-BY-SA** | ✅ | ✅ (must share-alike) | ✅ |
+| **CC-BY-NC** | ❌ | ✅ | ✅ |
+| **CC-BY-ND** | ✅ | ❌ | ✅ |
+| **Personal Use Only** | ❌ | ❌ | ✅ |
+
+## Tool Integration
+
+### Web Search Patterns
+```
+# Broad search
+"[query] 3d model stl"
+
+# Platform-specific
+"[query] site:printables.com"
+"[query] site:thingiverse.com"
+
+# Quality-filtered
+"[query] 3d model tested prints"
+"[query] stl no supports"
+```
+
+### Browser Navigation Flow
+```
+1. browser_navigate → https://www.printables.com/search/models?q=[query]
+2. browser_snapshot → Extract results grid
+3. Parse: titles, ratings, download counts, URLs
+4. Rank by PQRS
+```
+
+## Troubleshooting
+
+**No Results Found**:
+1. Try alternate terms (e.g., "spool rack" vs "filament holder")
+2. Broaden category (search "holder" not "phone holder iPhone 14")
+3. Check Yeggi.com aggregator
+4. Suggest related categories
+
+**All Results Low Quality**:
+1. Acknowledge quality gap
+2. Recommend best-of-bad options
+3. Suggest commissioning custom design (Fiverr, etc.)
+4. Offer to search for "close enough" alternatives
+
+**Platform Down/Inaccessible**:
+1. Skip that platform gracefully
+2. Note in sources which platforms were checked
+3. Suggest user check directly later
+
+## Response Checklist
+Before finalizing recommendation, verify:
+- [ ] Searched at least 3 platforms
+- [ ] PQRS scores calculated for all candidates
+- [ ] License type identified for top picks
+- [ ] Print settings provided for #1 recommendation
+- [ ] Supports requirement clearly stated
+- [ ] Links tested (or disclaimer if can't access)
+- [ ] Warning for any red flags (low rating, mesh errors, etc.)

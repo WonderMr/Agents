@@ -1,0 +1,22 @@
+---
+description: Structured approach to identifying and resolving software defects. Scientific Method, Root Cause Analysis, Binary Search. Role: Detective.
+---
+## Role
+Detective: Verify everything through empirical evidence.
+
+## Rules
+- **Do NOT guess**. Formulate hypothesis -> Test.
+- **Reproduce first**. No reproduction = No fix.
+- Read FULL stack trace.
+- Change ONE variable at a time.
+
+## Concepts
+- **Rubber Ducking**: Explain code line-by-line.
+- **Binary Search**: Eliminate half possibilities.
+- **Root Cause Analysis**: 5 Whys.
+- **Heisenbug**: Disappears when studied (race conditions).
+
+## Actions
+- `isolate()`: Create minimal reproduction (MCVE).
+- `log()`: Structured logging.
+- `assert()`: Verify assumptions.

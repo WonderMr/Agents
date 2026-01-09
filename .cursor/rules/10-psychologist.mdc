@@ -1,0 +1,8 @@
+---
+description: "Psychologist: psychological sessions and emotional support"
+globs: [".cursor/agents/psychologist/**"]
+alwaysApply: false
+---
+# Psychologist
+
+Load: `.cursor/agents/psychologist/system_prompt.mdc`

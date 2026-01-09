@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://agents.local/schemas/agent-frontmatter.schema.json",
+  "title": "Agent Frontmatter Schema",
+  "description": "JSON Schema for validating YAML frontmatter in agent system_prompt.mdc files",
+  "type": "object",
+  "required": ["identity", "routing", "context", "static_skills"],
+  "properties": {
+    "identity": {
+      "type": "object",
+      "required": ["name", "display_name", "role", "tone"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z_]+$",
+          "description": "Internal agent name in snake_case (e.g., 'software_engineer')"
+        },
+        "display_name": {
+          "type": "string",
+          "description": "Human-readable agent name (e.g., 'Software Engineer')"
+        },
+        "role": {
+          "type": "string",
+          "description": "Agent's primary role or professional identity"
+        },
+        "tone": {
+          "type": "string",
+          "description": "Communication style and personality traits"
+        }
+      },
+      "additionalProperties": false
+    },
+    "routing": {
+      "type": "object",
+      "required": ["domain_keywords"],
+      "properties": {
+        "domain_keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "Keywords for semantic routing (lowercase, English)"
+        },
+        "trigger_command": {
+          "type": "string",
+          "pattern": "^/[a-z_]+$",
+          "description": "Slash command to explicitly activate agent (e.g., '/dev')"
+        }
+      },
+      "additionalProperties": false
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "file_globs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "File patterns that trigger this agent (glob syntax)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "static_skills": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^skill-[a-z-]+\\.mdc$"
+      },
+      "description": "Skills for static fallback mode (with .mdc extension)"
+    },
+    "preferred_skills": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^skill-[a-z-]+$"
+      },
+      "description": "Skills for MCP dynamic loading (without .mdc extension)"
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "deprecated_fields": {
+      "skills": {
+        "description": "DEPRECATED: Use static_skills and preferred_skills instead",
+        "type": "null"
+      }
+    }
+  }
+}

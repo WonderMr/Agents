@@ -1,0 +1,9 @@
+---
+description: Reverse CoT. Reconstructing conditions from the solution to check consistency.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. Solve task.
+2. "Now reconstruct original conditions from your solution."
+3. "Compare with original. Fix discrepancies."

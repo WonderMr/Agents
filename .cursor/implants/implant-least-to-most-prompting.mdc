@@ -1,0 +1,7 @@
+---
+description: Least-to-Most Prompting. Decompose complex task, solve sequentially using previous answers.
+globs: []
+alwaysApply: false
+---
+## Pattern
+"Break this complex task into simple subtasks. Solve them sequentially from simple to complex, using results from previous steps."

@@ -1,0 +1,9 @@
+---
+description: Rephrase and Respond. Clarifying ambiguous requests before answering.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. "Rephrase and expand my request to be maximally precise."
+2. "I understood the task as: [Interpretation]."
+3. "Answering the expanded version."

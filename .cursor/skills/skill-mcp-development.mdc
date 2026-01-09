@@ -1,0 +1,35 @@
+---
+description: "Best practices for developing MCP servers (Model Context Protocol)"
+---
+# MCP Development Skills
+
+## Core Architecture
+- **Framework**: Use `mcp.server.fastmcp.FastMCP` for Python servers. It provides a cleaner decorator-based API compared to the low-level server.
+- **Transport**: Default to `stdio` for local integrations.
+- **Async**: Always use `async/await`. MCP servers are inherently asynchronous.
+
+## Integration Patterns (REST API)
+- **HTTP Client**: Use `httpx.AsyncClient()` as a context manager inside tools.
+- **Authentication**:
+  - NEVER hardcode secrets. Use `os.getenv()`.
+  - Prefer Headers construction helper functions.
+- **Error Handling**:
+  - Wrap external API calls in `try/except`.
+  - Return meaningful error strings to the LLM, don't just crash.
+  - Use `logger.error()` for debugging.
+
+## Tool Design
+- **Docstrings**: The docstring IS the prompt for the model. Be descriptive.
+- **Type Hints**: Use standard Python type hints (`str`, `int`, `bool`).
+- **Complex Types**: For complex inputs, use `pydantic.BaseModel` (supported by FastMCP).
+
+## Registration
+- Add new servers to `mcp.json` in the root directory.
+- Use the absolute path to the virtual environment python executable if possible, or relative `.venv/bin/python`.
+- Format:
+  ```json
+  "my-server": {
+    "command": ".venv/bin/python",
+    "args": ["src/mcp_servers/my_server/server.py"]
+  }
+  ```

@@ -1,0 +1,7 @@
+---
+description: Thread of Thought. Long context understanding. Summarize steps holding the thread.
+globs: []
+alwaysApply: false
+---
+## Pattern
+"Walk sequentially through chaotic context. Summarize each step, holding the 'thread' of meaning."

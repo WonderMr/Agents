@@ -1,0 +1,8 @@
+---
+description: Self-Consistency. Majority Vote. Generate multiple answers, select most frequent.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. Generate 5 independent answers (CoT).
+2. Select the answer that appears most frequently (Consensus).

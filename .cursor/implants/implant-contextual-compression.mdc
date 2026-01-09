@@ -1,0 +1,7 @@
+---
+description: Contextual Compression. Distills text to key facts/numbers. Token economy.
+globs: []
+alwaysApply: false
+---
+## Pattern
+"Compress text. Keep ONLY facts, numbers, names, logic. Remove fluff. Format: bulleted list."

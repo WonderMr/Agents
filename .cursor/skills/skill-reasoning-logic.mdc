@@ -1,0 +1,26 @@
+---
+description: Critical thinking and logical formalization. Chain of Verification, Logic of Thought, Reflexion, Step-Back.
+alwaysApply: false
+---
+## Purpose
+Consolidates fact-checking, logical formalization, and self-correction.
+
+## Methods
+1. **Chain of Verification (CoV)**
+   - *Use*: Facts, news, protocols.
+   - *Protocol*: Draft -> Verify Claims -> Correct.
+
+2. **Logic of Thought (LoT)**
+   - *Use*: Arguments, rules.
+   - *Protocol*: Propositions -> Inference -> Conclusion.
+
+3. **Step-Back Prompting**
+   - *Use*: Complex problems.
+   - *Protocol*: Abstract Principle -> Specific Application.
+
+4. **Reflexion**
+   - *Use*: High-stakes tasks.
+   - *Protocol*: Actor -> Critic -> Reflector.
+
+## Trigger
+"Trust but Verify. Step back. Critique your own output."

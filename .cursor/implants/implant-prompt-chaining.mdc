@@ -1,0 +1,9 @@
+---
+description: Prompt Chaining. Breaking task into sequence of LLM calls.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. Prompt A -> Result A.
+2. Prompt B (with Result A) -> Result B.
+3. Synthesis.

@@ -1,0 +1,9 @@
+---
+description: Tabular Thinking. Structures data into a table (Objects x Characteristics) before answering. Good for comparisons.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. Create a table: Rows=[Objects], Cols=[Characteristics].
+2. Fill with data.
+3. Answer the question using the table.

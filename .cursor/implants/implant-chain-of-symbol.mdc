@@ -1,0 +1,9 @@
+---
+description: Symbolic Abstraction. Replaces objects with symbols (A, B, C), solves logic/spatial task, translates back.
+globs: []
+alwaysApply: false
+---
+## Pattern
+1. **Encode**: Replace objects with symbols (A, B, C).
+2. **Manipulate**: Solve using symbols only.
+3. **Decode**: Translate result back to real objects.

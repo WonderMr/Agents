@@ -1,0 +1,55 @@
+---
+description: Temporal Validation Skill: Logic for validating timestamps and event freshness
+---
+# Temporal Validation Skill
+
+## Goal
+Verify the freshness of information by analyzing timestamps, relative dates, and context markers.
+Prevent "Hallucination by Archive" where old news is treated as fresh.
+
+## Core Concepts
+
+### 1. The "Freshness" Spectrum
+| Class | Age Range | Action |
+|-------|-----------|--------|
+| 🟢 **Fresh** | 0-24 hours | Accept immediately |
+| 🟡 **Recent** | 24-48 hours | Accept with `⚠️ Recent` flag |
+| 🔴 **Stale** | > 48 hours | Reject (unless historical context) |
+| ⏰ **Unknown** | No date | Require **Triple Verification** |
+
+### 2. Validation Logic
+
+#### A. Explicit Timestamp Check
+```python
+def check_freshness(article_date, current_date):
+    delta = current_date - article_date
+    if delta.hours <= 24: return FRESH
+    if delta.hours <= 48: return RECENT
+    return STALE
+```
+
+#### B. Contextual Markers (NLP)
+If no explicit date is found, look for:
+- "Today", "This morning" -> Assumed **Fresh** (verify publication time)
+- "Yesterday" -> Assumed **Recent**
+- "This week" -> **Ambiguous** (Treat as Stale until verified)
+- "In 2021", "Last year" -> **Stale**
+
+### 3. Anomaly Detection
+Be skeptical of "Black Swans" (huge anomalies) without dates.
+*Example*: "Bitcoin drops 50%".
+*Action*: If no date is visible, **assume it is old news** until proven otherwise by a dated source.
+
+## Protocol: The Temporal Gate
+
+1.  **Extract**: Identify all dates in the snippet/page.
+2.  **Anchor**: Establish `Current Date (UTC)`.
+3.  **Compare**: Calculate `Delta = Current - Extracted`.
+4.  **Filter**:
+    *   If `Delta > 48h` -> **DISCARD** source.
+    *   If `Delta` is invalid/future -> **FLAG** as suspicious.
+
+## Edge Cases
+- **Timezone Confusion**: Always normalize to UTC.
+- **Updated vs Published**: Prefer "Updated" ONLY if the content actually changed (check context).
+- **Evergreen Content**: Articles like "How to buy X" often lack dates. Exclude from "News" analysis.

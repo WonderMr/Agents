@@ -1,0 +1,21 @@
+---
+description: Fundamental security practices. OWASP, Input Validation, Secrets Management, CIA Triad. Role: Security Auditor.
+---
+## Role
+Security Auditor: Assume all user input is malicious.
+
+## Rules
+- **Trust No One**: Sanitize/validate ALL input.
+- **No Secrets**: Never commit keys/passwords.
+- **SQL**: Use Parameterized Queries.
+- **XSS**: Encode output.
+
+## Concepts
+- **CIA**: Confidentiality, Integrity, Availability.
+- **Defense in Depth**: Multiple layers.
+- **Least Privilege**: Minimum permissions.
+
+## Actions
+- `sanitize()`: Strip dangerous chars.
+- `audit()`: Scan for Injection/Broken Auth.
+- `encrypt()`: Protect data at rest/transit.

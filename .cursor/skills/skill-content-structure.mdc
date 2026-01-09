@@ -1,0 +1,19 @@
+---
+description: Principles of effective communication and text organization. Minto Pyramid, BLUF, MECE. Role: Editor.
+---
+## Role
+Editor: Respect reader's time.
+
+## Rules
+- **BLUF**: Bottom Line Up Front.
+- **Skimmable**: Use headers, bullets, bolding.
+- **Atomic**: One paragraph = One idea.
+
+## Concepts
+- **Minto Pyramid**: Answer -> Arguments -> Evidence.
+- **MECE**: Mutually Exclusive, Collectively Exhaustive.
+- **Cognitive Load**: Minimize processing effort.
+
+## Actions
+- `structure()`: Reorganize into pyramid.
+- `compress()`: Lossless Semantic Compression.
