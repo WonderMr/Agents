@@ -1,0 +1,87 @@
+import os
+import httpx
+import logging
+from mcp.server.fastmcp import FastMCP
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Configuration
+API_BASE_URL = "{{ base_url }}"
+SERVER_NAME = "{{ server_name }}"
+
+# Setup Logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(SERVER_NAME)
+
+# Initialize MCP Server
+mcp = FastMCP(SERVER_NAME)
+
+def get_auth_headers() -> dict:
+    """
+    Constructs authentication headers based on environment variables.
+    """
+    headers = {
+        "Content-Type": "application/json",
+        "User-Agent": f"Cursor-MCP-{SERVER_NAME}"
+    }
+
+    # AUTH_TYPE: {{ auth_type }}
+    {% if auth_type == 'bearer' %}
+    token = os.getenv("{{ auth_env_var }}")
+    if not token:
+        logger.warning("{{ auth_env_var }} not set! API calls may fail.")
+    else:
+        headers["Authorization"] = f"Bearer {token}"
+    {% elif auth_type == 'basic' %}
+    # Basic Auth is handled in the client request usually, or header construction here
+    import base64
+    username = os.getenv("{{ auth_user_env }}")
+    password = os.getenv("{{ auth_pass_env }}")
+    if username and password:
+        auth_str = f"{username}:{password}"
+        b64_auth = base64.b64encode(auth_str.encode()).decode()
+        headers["Authorization"] = f"Basic {b64_auth}"
+    {% elif auth_type == 'custom_header' %}
+    api_key = os.getenv("{{ auth_env_var }}")
+    if api_key:
+        headers["{{ auth_header_name }}"] = api_key
+    {% endif %}
+
+    return headers
+
+@mcp.tool()
+async def check_health() -> str:
+    """
+    Checks if the API is reachable.
+    """
+    url = f"{API_BASE_URL}/" # Adjust if health endpoint is different
+    headers = get_auth_headers()
+
+    async with httpx.AsyncClient() as client:
+        try:
+            resp = await client.get(url, headers=headers, timeout=5.0)
+            return f"Status: {resp.status_code}. Reachable."
+        except Exception as e:
+            return f"Error connecting to API: {str(e)}"
+
+# --- Generated Tools ---
+
+# Example Tool Structure
+# @mcp.tool()
+# async def example_tool(param: str) -> str:
+#     """Description"""
+#     url = f"{API_BASE_URL}/endpoint"
+#     headers = get_auth_headers()
+#     async with httpx.AsyncClient() as client:
+#         resp = await client.get(url, headers=headers)
+#         return str(resp.json())
+
+if __name__ == "__main__":
+    mcp.run()
+
+
+
+
+

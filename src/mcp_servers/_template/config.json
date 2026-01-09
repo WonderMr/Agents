@@ -1,0 +1,6 @@
+{
+  "name": "{{ server_name }}",
+  "base_url": "{{ base_url }}",
+  "auth_type": "{{ auth_type }}",
+  "description": "MCP Server for {{ server_name }}"
+}

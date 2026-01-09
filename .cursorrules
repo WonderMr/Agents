@@ -1,0 +1,3 @@
+Source of Truth:
+- `.cursor/rules/00-router.mdc`
+- `.cursor/rules/10-*.mdc`

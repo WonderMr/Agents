@@ -1,0 +1,75 @@
+# ===========================================
+# .cursorignore — экономия токенов Cursor AI
+# ===========================================
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Git internals
+.git/
+
+# IDE settings (не нужны AI)
+.vscode/
+.idea/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Archives
+*.tar.gz
+*.zip
+*.rar
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+chroma_db/
+
+# Logs
+*.log
+logs/
+
+# Secrets
+.env
+*.pem
+*.key
+
+# Lock files (много строк, мало смысла)
+*.lock
+package-lock.json
+poetry.lock
+
+
+# Временные файлы
+*.tmp
+*.temp
+*.swp
+*~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
