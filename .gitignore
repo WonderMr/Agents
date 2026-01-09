@@ -1,0 +1,23 @@
+.env
+src/utils/__pycache__/
+src/schemas/__pycache__/
+src/engine/__pycache__/
+chroma_db/
+node_modules/
+**/node_modules/
+dist/
+.DS_Store
+*.log
+*.7z
+*.zip
+
+# Ignore all hidden directories/files
+.*
+**/.*
+
+# Exceptions (keep these visible)
+!.cursor/
+!.gitignore
+!.git/
+
+*.pyc
